@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "paraphrasing-bot"
+version = "0.1.0"
+description = ""
+authors = ["Pablo Aramburo <josepablo.aramburo@laziness.rocks>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Flask = "^1.1.2"
+gunicorn = "^20.0.4"
+Flask-Log-Request-ID = "^0.10.1"
+Flask-SQLAlchemy = "^2.5.1"
+Flask-Migrate = "^2.6.0"
+python-dotenv = "^0.15.0"
+psycopg2 = "^2.8.6"
+marshmallow = "^3.10.0"
+Flask-Cors = "^3.0.10"
+pendulum = "2.0.5"
+requests = "^2.25.1"
+redis = "^3.5.3"
+python-dateutil = "^2.8.1"
+sqlalchemy-mixins = "^1.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
