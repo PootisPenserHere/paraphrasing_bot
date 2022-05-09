@@ -4,7 +4,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
-from flask_jwt_extended import JWTManager
 from flask_log_request_id import RequestID, RequestIDLogFilter
 from logging.handlers import RotatingFileHandler
 
@@ -68,15 +67,3 @@ file_formatter = logging.Formatter(
 file_handler.setFormatter(file_formatter)
 file_handler.addFilter(RequestIDLogFilter())
 logger.addHandler(file_handler)
-
-# JWT config
-app.config["JWT_SECRET_KEY"] = app_config.JWT_SECRET
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=app_config.JWT_ACCESS_HOURS_DURATION)
-app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(hours=app_config.JWT_REFRESH_HOURS_DURATION)
-app.config["JWT_TOKEN_LOCATION"] = ["headers", "query_string"]
-app.config["JWT_QUERY_STRING_NAME"] = "token"
-app.config["JWT_ALGORITHM"] = app_config.JWT_ALGORITHM
-app.config["JWT_DECODE_ALGORITHMS"] = app_config.JWT_ALGORITHM
-
-
-jwt = JWTManager(app)

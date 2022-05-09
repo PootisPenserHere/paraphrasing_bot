@@ -7,9 +7,9 @@ services:
     ports:
       - "24708:5000"
     volumes:
-      - ./logs:/var/log/paraphrasing_bot
       - .:/usr/src/app
       - ./paraphrasing_bot/templates:/etc/paraphrasing_bot/templates
+      - /var/log/paraphrasing_bot
     env_file:
       - .env
     depends_on:
@@ -27,19 +27,19 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
     # volumes:
     #   - ~/.volumes/paraphrasing_bot/postgres:/var/lib/postgresql/data:rw
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: paraphrasing_bot_pgadmin
-    restart: always
-    ports:
-      - "45707:80"
-    volumes:
-      - ~/.volumes/paraphrasing_bot/pgadmin:/var/lib/pgadmin:rw
-    depends_on:
-      - postgres
-    environment:
-      PGADMIN_DEFAULT_EMAIL: 'tools@example.com'
-      PGADMIN_DEFAULT_PASSWORD: 'admin'
+#  pgadmin:
+#    image: dpage/pgadmin4:latest
+#    container_name: paraphrasing_bot_pgadmin
+#    restart: always
+#    ports:
+#      - "45707:80"
+#    volumes:
+#      - ~/.volumes/paraphrasing_bot/pgadmin:/var/lib/pgadmin:rw
+#    depends_on:
+#      - postgres
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: 'tools@example.com'
+#      PGADMIN_DEFAULT_PASSWORD: 'admin'
   redis:
     container_name: paraphrasing_bot_redis
     image: redis:6-alpine
