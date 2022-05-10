@@ -10,6 +10,7 @@ from paraphrasing_bot.app import app
 from paraphrasing_bot.src.domain.exceptions.HandledWithMessageException import HandledWithMessageException
 from paraphrasing_bot.src.services import Config
 from paraphrasing_bot.src.routes.generic import generic_blueprint
+from paraphrasing_bot.src.applications.Bootstrap import Bootstrap as BootstrapApplication
 
 # Load the .env file in case that it has been used to set envs
 # instead of injecting them through docker
@@ -29,6 +30,11 @@ def log_request_info():
         "body": request.get_data()
     }
     custom_logger.debug(request_data)
+
+
+@app.before_first_request
+def initial_setup():
+    BootstrapApplication()
 
 
 # Loading blueprints

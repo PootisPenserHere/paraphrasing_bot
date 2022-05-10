@@ -25,3 +25,5 @@ class Config:
     REDIS_PORT = int(os.environ["REDIS_PORT"])
     REDIS_DATABASE = os.environ["REDIS_DATABASE"]
     REDIS_DEFAULT_TTL = int(os.environ["REDIS_DEFAULT_TTL"])
+
+    TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
